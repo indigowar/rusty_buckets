@@ -17,6 +17,19 @@ impl<'a> Lexer<'a> {
 
         lexer
     }
+
+    pub fn read_all(input: Peekable<Chars<'a>>) -> Vec<Token> {
+        let mut lexer = Lexer::new(input);
+        let mut result = vec![lexer.next_token()];
+        loop {
+            let token = lexer.next_token();
+            result.push(token.clone());
+            if token == Token::Eof {
+                break;
+            }
+        }
+        result
+    }
 }
 
 impl Lexer<'_> {

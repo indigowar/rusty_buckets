@@ -1,4 +1,4 @@
-use lexer::{Lexer, Token};
+use lexer::Lexer;
 
 mod lexer;
 
@@ -9,13 +9,8 @@ CREATE TABLE accounts(id int primary key, name varchar(255) not null);
 UPDATE accounts SET id = 5423 WHERE LEN(name) > 15;
 ";
 
-    let mut lexer = Lexer::new(input.chars().peekable());
-
     println!("{}", input);
-
-    let mut token = lexer.next_token();
-    while token != Token::Eof {
+    for token in Lexer::read_all(input.chars().peekable()) {
         println!("{}", token);
-        token = lexer.next_token();
     }
 }
