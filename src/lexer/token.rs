@@ -4,6 +4,7 @@ use std::fmt::Display;
 pub enum Token {
     Create,
     Drop,
+    Alter,
 
     Table,
     View,
@@ -17,6 +18,19 @@ pub enum Token {
     From,
     Set,
     Is,
+    Group,
+    Having,
+    Order,
+    By,
+
+    Commit,
+    Rollback,
+
+    Join,
+    Inner,
+    Left,
+    Right,
+    Full,
 
     Primary,
     Foreign,
@@ -31,6 +45,16 @@ pub enum Token {
     And,
     Or,
     Not,
+    In,
+    Between,
+    Like,
+    Null,
+
+    Case,
+    Then,
+    Else,
+    End,
+    As,
 
     Equal,
     NotEqual,
@@ -66,6 +90,7 @@ impl Display for Token {
         let output = match self {
             Token::Create => "create",
             Token::Drop => "drop",
+            Token::Alter => "alter",
 
             Token::Table => "table",
             Token::View => "view",
@@ -79,6 +104,19 @@ impl Display for Token {
             Token::From => "from",
             Token::Set => "set",
             Token::Is => "is",
+            Token::Group => "group",
+            Token::Having => "having",
+            Token::Order => "order",
+            Token::By => "by",
+
+            Token::Commit => "commit",
+            Token::Rollback => "rollback",
+
+            Token::Join => "join",
+            Token::Inner => "inner",
+            Token::Left => "left",
+            Token::Right => "right",
+            Token::Full => "full",
 
             Token::Primary => "primary",
             Token::Foreign => "foreign",
@@ -93,6 +131,16 @@ impl Display for Token {
             Token::And => "and",
             Token::Or => "or",
             Token::Not => "not",
+            Token::In => "in",
+            Token::Between => "between",
+            Token::Like => "like",
+            Token::Null => "null",
+
+            Token::Case => "case",
+            Token::Then => "then",
+            Token::Else => "else",
+            Token::End => "end",
+            Token::As => "as",
 
             Token::Equal => "=",
             Token::NotEqual => "<>",
@@ -149,6 +197,7 @@ impl From<String> for Token {
         match value.as_str() {
             "create" => Token::Create,
             "drop" => Token::Drop,
+            "alter" => Token::Alter,
 
             "table" => Token::Table,
             "view" => Token::View,
@@ -162,6 +211,19 @@ impl From<String> for Token {
             "from" => Token::From,
             "set" => Token::Set,
             "is" => Token::Is,
+            "group" => Token::Group,
+            "having" => Token::Having,
+            "order" => Token::Order,
+            "by" => Token::By,
+
+            "commit" => Token::Commit,
+            "rollback" => Token::Rollback,
+
+            "join" => Token::Join,
+            "inner" => Token::Inner,
+            "left" => Token::Left,
+            "right" => Token::Right,
+            "full" => Token::Full,
 
             "primary" => Token::Primary,
             "foreign" => Token::Foreign,
@@ -176,6 +238,16 @@ impl From<String> for Token {
             "and" => Token::And,
             "or" => Token::Or,
             "not" => Token::Not,
+            "in" => Token::In,
+            "between" => Token::Between,
+            "like" => Token::Like,
+            "null" => Token::Null,
+
+            "case" => Token::Case,
+            "then" => Token::Then,
+            "else" => Token::Else,
+            "end" => Token::End,
+            "as" => Token::As,
 
             "<>" => Token::NotEqual,
             ">=" => Token::BiggerEqual,
