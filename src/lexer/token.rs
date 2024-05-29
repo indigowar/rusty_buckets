@@ -8,6 +8,7 @@ pub enum Token {
 
     Table,
     View,
+    Index,
 
     Select,
     Insert,
@@ -55,6 +56,7 @@ pub enum Token {
     Else,
     End,
     As,
+    On,
 
     Equal,
     NotEqual,
@@ -94,6 +96,7 @@ impl Display for Token {
 
             Token::Table => "table",
             Token::View => "view",
+            Token::Index => "index",
 
             Token::Select => "select",
             Token::Insert => "insert",
@@ -141,6 +144,7 @@ impl Display for Token {
             Token::Else => "else",
             Token::End => "end",
             Token::As => "as",
+            Token::On => "on",
 
             Token::Equal => "=",
             Token::NotEqual => "<>",
@@ -201,6 +205,7 @@ impl From<String> for Token {
 
             "table" => Token::Table,
             "view" => Token::View,
+            "index" => Token::Index,
 
             "select" => Token::Select,
             "insert" => Token::Insert,
@@ -248,6 +253,7 @@ impl From<String> for Token {
             "else" => Token::Else,
             "end" => Token::End,
             "as" => Token::As,
+            "on" => Token::On,
 
             "<>" => Token::NotEqual,
             ">=" => Token::BiggerEqual,
